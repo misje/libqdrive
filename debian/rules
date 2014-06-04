@@ -1,0 +1,11 @@
+#!/usr/bin/make -f
+%:
+	dh $@ --parallel
+
+override_dh_auto_build:
+	qmake
+	make -j4
+
+# Needed when using Qt 5 from source (placed in /usr/local/lib):
+override_dh_shlibdeps:
+	 dh_shlibdeps --dpkg-shlibdeps-params=--ignore-missing-info

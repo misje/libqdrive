@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+dpkg-buildpackage -i -us -uc -b
+dh_clean
+
+# NOTE: Update changelog by using dch

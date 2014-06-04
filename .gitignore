@@ -1,0 +1,10 @@
+*.o
+moc_*
+Makefile
+*.moc
+.*sw*
+cscope.out
+tags
+*.a
+*.deb
+*.changes

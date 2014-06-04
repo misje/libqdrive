@@ -1,0 +1,15 @@
+Source: libqdrive
+Maintainer: Andreas Misje <amisje@gmail.com>
+Homepage: http://github.com/misje/libqdrive
+Section: libs
+Priority: optional
+Standards-Version: 3.9.2
+Vcs-Git: git://github.com/misje/libqdrive
+
+Package: libqdrive
+Depends: libqt5dbus5
+Architecture: amd64
+Description: Qt interface for UDisks2
+ This library includes support for enumerating disks and partitions on the
+ system, as well as monitoring hotplug events. It also includes a Qt table
+ model for partitions, suitable for use in a widget/QML GUI.
