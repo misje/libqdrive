@@ -148,9 +148,9 @@ namespace QDrive
 		void mountPartition(int row) const;
 		void mountPartition(const QString &path) const;
 		void mountAll() const;
-		void unmountPartition(int row) const;
-		void unmountPartition(const QString &path) const;
-		void unmountAll() const;
+		void unmountPartition(int row, bool force = false) const;
+		void unmountPartition(const QString &path, bool force = false) const;
+		void unmountAll(bool force = false) const;
 
 #if QT_VERSION >= QT_VERSION_CHECK(5,2,0)
 	private:
