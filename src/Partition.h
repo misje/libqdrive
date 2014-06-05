@@ -99,7 +99,7 @@ namespace QDrive
 
 	public slots:
 		void mount() const;
-		void unmount() const;
+		void unmount(bool force = false) const;
 
 	private slots:
 		void inspectFileSysPropertyChanges(const QString &interface, const 

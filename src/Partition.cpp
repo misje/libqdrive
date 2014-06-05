@@ -189,14 +189,18 @@ void Partition::mount() const
 		throw DBusException(reply.error().message().toStdString());
 }
 
-void Partition::unmount() const
+void Partition::unmount(bool force) const
 {
 	QDBusConnection sys = QDBusConnection::systemBus();
 	QDBusMessage unmount = QDBusMessage::createMethodCall(UDisks2::service(), 
 			path().path(), Interface::UDisks2("Filesystem"), "Unmount");
 
 	QVariantList arguments;
-	arguments << QVariantMap();
+	QVariantMap options;
+	if (force)
+		options["force"] = true;
+
+	arguments << options;
 
 	unmount.setArguments(arguments);
 

@@ -371,14 +371,14 @@ void PartitionListModel::mountAll() const
 		}
 }
 
-void PartitionListModel::unmountPartition(int row) const
+void PartitionListModel::unmountPartition(int row, bool force) const
 {
 	if ( !(row >= 0 && row < rowCount()) )
 		return;
 
 	try
 	{
-		m_partitions.at(row)->unmount();
+		m_partitions.at(row)->unmount(force);
 	}
 	catch (const DBusException &exception)
 	{
@@ -386,14 +386,14 @@ void PartitionListModel::unmountPartition(int row) const
 	}
 }
 
-void PartitionListModel::unmountPartition(const QString &path) const
+void PartitionListModel::unmountPartition(const QString &path, bool force) const
 {
 	foreach (Partition *partition, m_partitions)
 		if (partition->path().path() == path)
 		{
 			try
 			{
-				partition->unmount();
+				partition->unmount(force);
 			}
 			catch (const DBusException &exception)
 			{
@@ -403,12 +403,12 @@ void PartitionListModel::unmountPartition(const QString &path) const
 		}
 }
 
-void PartitionListModel::unmountAll() const
+void PartitionListModel::unmountAll(bool force) const
 {
 	foreach (Partition *partition, m_partitions)
 		try
 		{
-			partition->unmount();
+			partition->unmount(force);
 		}
 		catch (const DBusException &exception)
 		{
