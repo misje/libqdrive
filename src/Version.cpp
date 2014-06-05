@@ -14,7 +14,7 @@ int QDrive::Version::minor()
 
 int QDrive::Version::release()
 {
-	return 0;
+	return 1;
 }
 
 int QDrive::Version::package()
@@ -33,10 +33,10 @@ bool QDrive::Version::isDirty()
 
 QString QDrive::Version::string()
 {
-	return "0.9.0-1";
+	return "0.9.1-1";
 }
 
 QString QDrive::Version::vString()
 {
-	return "v0.9.0-1";
+	return "v0.9.1-1";
 }
