@@ -82,10 +82,9 @@ QDateTime Drive::timeMediaDetected() const
 				"TimeMediaDetected").toULongLong()/1000 );
 }
 
-bool Drive::isUSB() const
+QString Drive::connectionBus() const
 {
-	return dbusProperty(Interface::UDisks2("Drive"), "ConnectionBus").toString()
-		== "usb";
+	return dbusProperty(Interface::UDisks2("Drive"), "ConnectionBus").toString();
 }
 
 bool Drive::isRemovable() const
@@ -110,9 +109,9 @@ QDebug operator <<(QDebug d, const QDrive::Drive &drive)
 		d.nospace() << "  media available:\t" << drive.isMediaAvailable() << '\n';
 		d.nospace() << "  size:\t\t\t" << drive.size() << '\n';
 		d.nospace() << "  time detected:\t" << drive.timeDetected() << '\n';
-		d.nospace() << " time media detected:\t" << drive.timeMediaDetected() << '\n';
-		d.nospace() << " USB:\t\t\t" << drive.isUSB() << '\n';
-		d.nospace() << "  removable:\t\t" << drive.isRemovable();
+		d.nospace() << "  time media detected:\t" << drive.timeMediaDetected() << '\n';
+		d.nospace() << "  connection bus:\t" << drive.connectionBus() << '\n';
+		d.nospace() << "  removable:\t\t" << drive.isRemovable() << '\n';
 	}
 
 	return d.nospace();

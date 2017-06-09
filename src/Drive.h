@@ -30,7 +30,7 @@ namespace QDrive
 		Q_PROPERTY(qulonglong size READ size CONSTANT);
 		Q_PROPERTY(QDateTime timeDetected READ timeDetected CONSTANT);
 		Q_PROPERTY(QDateTime timeMediaDetected READ timeMediaDetected CONSTANT);
-		Q_PROPERTY(bool usb READ isUSB CONSTANT);
+		Q_PROPERTY(QString connectionBus READ connectionBus CONSTANT)
 		Q_PROPERTY(bool removable READ isRemovable CONSTANT);
 
 	public:
@@ -61,7 +61,7 @@ namespace QDrive
 		qulonglong size() const;
 		QDateTime timeDetected() const;
 		QDateTime timeMediaDetected() const;
-		bool isUSB() const;
+		QString connectionBus() const;
 		bool isRemovable() const;
 	};
 };
