@@ -7,24 +7,26 @@ MOC_DIR = tmp
 OBJECTS_DIR = tmp
 
 HEADERS += \
-	src/Version.h \
-	src/QDrive.h \
+	src/AvailableSpace.h \
+	src/BlockDevice.h \
 	src/DBusObject.h \
 	src/Drive.h \
-	src/Partition.h \
+	src/FileSystem.h \
 	src/Monitor.h \
-	src/AvailableSpace.h \
-	src/PartitionListModel.h
+	src/Partition.h \
+	src/QDrive.h \
+	src/Version.h
 
 SOURCES += \
-	src/Version.cpp \
-	src/QDrive.cpp \
+	src/AvailableSpace.cpp \
+	src/BlockDevice.cpp \
 	src/DBusObject.cpp \
 	src/Drive.cpp \
-	src/Partition.cpp \
+	src/FileSystem.cpp \
 	src/Monitor.cpp \
-	src/AvailableSpace.cpp \
-	src/PartitionListModel.cpp
+	src/Partition.cpp \
+	src/QDrive.cpp \
+	src/Version.cpp
 
 libfiles.files = $${DESTDIR}/lib$${TARGET}.a
 libfiles.path = /usr/lib/

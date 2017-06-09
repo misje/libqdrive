@@ -10,6 +10,8 @@
 #include <QObject>
 #include <QDBusObjectPath>
 
+class QDBusArgument;
+
 namespace QDrive
 {
 	/**
@@ -63,6 +65,9 @@ namespace QDrive
 		 */
 		static QString introspect(const QString &path, int replyTimeout);
 		QString introspect() const;
+	
+	protected:
+		static QStringList aayToStringList(const QDBusArgument &byteArrayArray);
 
 	private:
 		QDBusObjectPath m_path;

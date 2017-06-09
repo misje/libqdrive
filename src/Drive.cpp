@@ -7,7 +7,6 @@
 #include "QDrive.h"
 #include "Drive.h"
 using namespace QDrive;
-#include <QXmlStreamReader>
 
 Drive::Drive(const QDBusObjectPath &path, QObject *parent)
 	: DBusObject(path, parent)
@@ -28,16 +27,7 @@ bool Drive::isValid() const
 
 bool Drive::isDrive(const QDBusObjectPath &path, int replyTimeout)
 {
-	QXmlStreamReader xml(introspect(path.path(), replyTimeout));
-	while (!xml.atEnd())
-	{
-		xml.readNext();
-		if (xml.isStartElement() && xml.name() == "interface" &&
-			xml.attributes().value("name") == Interface::UDisks2("Drive"))
-			return true;
-	}
-
-	return false;
+	return QDrive::hasInterface(path, Interface::UDisks2("Drive"), replyTimeout);
 }
 
 bool Drive::isDrive(const QList<QString> &interfaces)

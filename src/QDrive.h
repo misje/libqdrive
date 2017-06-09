@@ -42,18 +42,22 @@ namespace QDrive
 		QString Properties();
 	};
 
+	bool hasInterface(const QDBusObjectPath &path, const QString &interface, int
+			replyTimeout);
 	/** \brief List all drives on the computer
 	 *
 	 * \param replyTimeout Maximum (blocking) waiting time for a reply in ms
 	 * \returns A list of device object paths
 	 */
 	QList<QDBusObjectPath> drives(int replyTimeout);
+	QList<QDBusObjectPath> blockDevices(int replyTimeout);
 	/** \brief List all partitions on the computer
 	 *
 	 * \param replyTimeout Maximum (blocking) waiting time for a reply in ms
 	 * \returns A list of partition object paths
 	 */
 	QList<QDBusObjectPath> partitions(int replyTimeout);
+	QList<QDBusObjectPath> fileSystems(int replyTimeout);
 };
 
 QDebug operator <<(QDebug d, const QDBusObjectPath &path);

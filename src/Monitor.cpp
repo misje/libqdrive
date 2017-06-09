@@ -8,6 +8,8 @@
 #include "Monitor.h"
 #include "Drive.h"
 #include "Partition.h"
+#include "FileSystem.h"
+#include "BlockDevice.h"
 using namespace QDrive;
 #include <QDBusConnection>
 #include <QDBusError>
@@ -44,9 +46,12 @@ void Monitor::checkAddedInterfaces(const QDBusObjectPath &path, const
 
 	if (Drive::isDrive(interfaceNames))
 		emit driveAdded(path);
-
-	else if (Partition::isPartition(interfaceNames))
+	if (BlockDevice::isBlockDevice(interfaceNames))
+		emit blockDeviceAdded(path);
+	if (Partition::isPartition(interfaceNames))
 		emit partitionAdded(path);
+	if (FileSystem::isFileSystem(interfaceNames))
+		emit fileSystemAdded(path);
 }
 
 void Monitor::checkRemovedInterfaces(const QDBusObjectPath &path, const 
@@ -54,7 +59,10 @@ void Monitor::checkRemovedInterfaces(const QDBusObjectPath &path, const
 {
 	if (Drive::isDrive(interfaces))
 		emit driveRemoved(path);
-
-	else if (Partition::isPartition(interfaces))
+	if (FileSystem::isFileSystem(interfaces))
+		emit fileSystemRemoved(path);
+	if (Partition::isPartition(interfaces))
 		emit partitionRemoved(path);
+	if (BlockDevice::isBlockDevice(interfaces))
+		emit blockDeviceRemoved(path);
 }

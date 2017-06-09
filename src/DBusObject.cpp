@@ -10,6 +10,7 @@ using namespace QDrive;
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDBusReply>
+//#include <QDBusArgument>
 
 DBusObject::DBusObject(const QDBusObjectPath &path, QObject *parent)
 	: QObject(parent), m_path(path), m_replyTimeout(100)
@@ -82,4 +83,15 @@ QString DBusObject::introspect(const QString &path, int replyTimeout)
 QString DBusObject::introspect() const
 {
 	return introspect(m_path.path(), m_replyTimeout);
+}
+
+
+QStringList DBusObject::aayToStringList(const QDBusArgument &byteArrayArray)
+{
+	QStringList stringList;
+	byteArrayArray.beginArray();
+	while (!byteArrayArray.atEnd())
+		stringList << qdbus_cast<QByteArray>(byteArrayArray);
+
+	return stringList;
 }
