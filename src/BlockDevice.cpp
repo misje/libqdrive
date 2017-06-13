@@ -75,7 +75,11 @@ bool BlockDevice::isReadOnly() const
 
 QDBusObjectPath BlockDevice::drive() const
 {
-	return dbusProperty(Interface::UDisks2("Block"), "Drive").value<QDBusObjectPath>();
+	auto path = dbusProperty(Interface::UDisks2("Block"), "Drive").value<QDBusObjectPath>();
+	if (path.path() == "/")
+		return {};
+	
+	return path;
 }
 
 QObject *BlockDevice::driveObject() const
