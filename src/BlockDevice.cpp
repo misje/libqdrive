@@ -82,9 +82,9 @@ QDBusObjectPath BlockDevice::drive() const
 	return path;
 }
 
-QObject *BlockDevice::driveObject() const
+QObject *BlockDevice::driveObject()
 {
-	return new Drive(drive());
+	return new Drive(drive(), this);
 }
 
 QString BlockDevice::usage() const

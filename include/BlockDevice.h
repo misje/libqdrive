@@ -65,7 +65,7 @@ namespace QDrive
 		qulonglong size() const;
 		bool isReadOnly() const;
 		QDBusObjectPath drive() const;
-		QObject *driveObject() const;
+		QObject *driveObject();
 		QString usage() const;
 		QString type() const;
 		QString label() const;
