@@ -1,11 +1,17 @@
 #!/usr/bin/make -f
+# For some reason DEB_VERSION is not available, so extract the version manually:
+VERSION := $(shell dpkg-parsechangelog -S Version | sed -r 's/-[[:digit:]]+$$//')
+
 %:
-	dh $@ --parallel
+	dh $@
 
-override_dh_auto_build:
-	qmake
-	make -j4
+override_dh_auto_configure:
+												# Create only a shared library for the deb
+	                                 # release:
+	QT_SELECT=5 dh_auto_configure -- CONFIG+=sharedlib VERSION="$(VERSION)"
 
-# Needed when using Qt 5 from source (placed in /usr/local/lib):
-override_dh_shlibdeps:
-	 dh_shlibdeps --dpkg-shlibdeps-params=--ignore-missing-info
+# Do not run 'make install' anywhere; use the install file:
+override_dh_auto_install:
+
+override_dh_clean:
+	dh_clean libqdrive.so*

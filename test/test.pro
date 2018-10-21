@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = test
-INCLUDEPATH += . ../src
+INCLUDEPATH += . ../src ../include
 CONFIG += c++11
 QT += dbus
 QT -= gui
