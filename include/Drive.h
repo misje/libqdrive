@@ -21,17 +21,17 @@ namespace QDrive
 	class Drive : public DBusObject
 	{
 		Q_OBJECT
-		Q_PROPERTY(QString vendor READ vendor CONSTANT);
-		Q_PROPERTY(QString model READ model CONSTANT);
-		Q_PROPERTY(QString serial READ serial CONSTANT);
-		Q_PROPERTY(QString id READ id CONSTANT);
-		Q_PROPERTY(bool mediaRemovable READ isMediaRemovable CONSTANT);
-		Q_PROPERTY(bool mediaAvailable READ isMediaAvailable CONSTANT);
-		Q_PROPERTY(qulonglong size READ size CONSTANT);
-		Q_PROPERTY(QDateTime timeDetected READ timeDetected CONSTANT);
-		Q_PROPERTY(QDateTime timeMediaDetected READ timeMediaDetected CONSTANT);
+		Q_PROPERTY(QString vendor READ vendor CONSTANT)
+		Q_PROPERTY(QString model READ model CONSTANT)
+		Q_PROPERTY(QString serial READ serial CONSTANT)
+		Q_PROPERTY(QString id READ id CONSTANT)
+		Q_PROPERTY(bool mediaRemovable READ isMediaRemovable CONSTANT)
+		Q_PROPERTY(bool mediaAvailable READ isMediaAvailable CONSTANT)
+		Q_PROPERTY(qulonglong size READ size CONSTANT)
+		Q_PROPERTY(QDateTime timeDetected READ timeDetected CONSTANT)
+		Q_PROPERTY(QDateTime timeMediaDetected READ timeMediaDetected CONSTANT)
 		Q_PROPERTY(QString connectionBus READ connectionBus CONSTANT)
-		Q_PROPERTY(bool removable READ isRemovable CONSTANT);
+		Q_PROPERTY(bool removable READ isRemovable CONSTANT)
 
 	public:
 		Drive(const QDBusObjectPath &path, QObject *parent = NULL);
@@ -64,7 +64,7 @@ namespace QDrive
 		QString connectionBus() const;
 		bool isRemovable() const;
 	};
-};
+}
 
 QDebug operator <<(QDebug d, const QDrive::Drive &drive);
 

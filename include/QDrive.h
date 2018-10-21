@@ -30,7 +30,7 @@ namespace QDrive
 		QString service();
 		QString path();
 		QString path(const QString &subPath);
-	};
+	}
 
 	/** \brief UDisks2 and D-Bus interfaces */
 	namespace Interface
@@ -40,7 +40,7 @@ namespace QDrive
 		QString ObjectManager();
 		QString Introspectable();
 		QString Properties();
-	};
+	}
 
 	bool hasInterface(const QDBusObjectPath &path, const QString &interface, int
 			replyTimeout);
@@ -58,7 +58,7 @@ namespace QDrive
 	 */
 	QList<QDBusObjectPath> partitions(int replyTimeout);
 	QList<QDBusObjectPath> fileSystems(int replyTimeout);
-};
+}
 
 QDebug operator <<(QDebug d, const QDBusObjectPath &path);
 

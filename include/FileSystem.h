@@ -14,16 +14,16 @@ namespace QDrive
 	class FileSystem : public DBusObject
 	{
 		Q_OBJECT
-		Q_PROPERTY(bool mounted READ isMounted NOTIFY mountPointsChanged);
+		Q_PROPERTY(bool mounted READ isMounted NOTIFY mountPointsChanged)
 		Q_PROPERTY(QStringList mountPoints READ mountPoints NOTIFY 
-				mountPointsChanged);
+				mountPointsChanged)
 		/** \brief Available space in mounted filesystem
 		 *
 		 * \note Filesystem must be mounted
 		 * \returns Number of available bytes, or 0 if filesystem is not mounted
 		 * or if available space could not be retrieved.
 		 */
-		Q_PROPERTY(quint64 availableSpace READ availableSpace);
+		Q_PROPERTY(quint64 availableSpace READ availableSpace)
 		Q_PROPERTY(QDBusObjectPath blockDevice READ blockDevice)
 
 	signals:
@@ -49,6 +49,6 @@ namespace QDrive
 				QVariantMap &changedProperties, const QStringList 
 				&invalidatedProperties);
 	};
-};
+}
 
 QDebug operator <<(QDebug d, const QDrive::FileSystem &fileSystem);

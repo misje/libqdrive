@@ -48,8 +48,8 @@ namespace QDrive
 		void checkRemovedInterfaces(const QDBusObjectPath &path, const QStringList
 				&interfaces);
 	};
-};
+}
 
-Q_DECLARE_METATYPE(QDrive::Monitor::InterfaceList);
+Q_DECLARE_METATYPE(QDrive::Monitor::InterfaceList)
 
 #endif // MONITOR_H

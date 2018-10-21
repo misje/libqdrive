@@ -29,8 +29,8 @@ namespace QDrive
 		/* TODO: Add RAID object and accessor */
 		Q_PROPERTY(QString usage READ usage CONSTANT)
 		Q_PROPERTY(QString type READ type CONSTANT)
-		Q_PROPERTY(QString label READ label CONSTANT);
-		Q_PROPERTY(QString uuid READ uuid CONSTANT);
+		Q_PROPERTY(QString label READ label CONSTANT)
+		Q_PROPERTY(QString uuid READ uuid CONSTANT)
 		Q_PROPERTY(QDBusObjectPath cryptoDevicePath READ cryptoDevicePath CONSTANT)
 		Q_PROPERTY(QObject *cryptoDeviceObject READ cryptoDeviceObject CONSTANT)
 		Q_PROPERTY(bool system READ isSystem CONSTANT)
@@ -77,6 +77,6 @@ namespace QDrive
 		bool hasFileSystem() const;
 		QDBusObjectPath fileSystem() const;
 	};
-};
+}
 
 QDebug operator <<(QDebug d, const QDrive::BlockDevice &blockDevice);

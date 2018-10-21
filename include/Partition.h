@@ -15,7 +15,7 @@ namespace QDrive
 	class Partition : public DBusObject
 	{
 		Q_OBJECT
-		Q_PROPERTY(int partitionNumber READ partitionNumber CONSTANT);
+		Q_PROPERTY(int partitionNumber READ partitionNumber CONSTANT)
 		Q_PROPERTY(qulonglong offset READ offset CONSTANT)
 		Q_PROPERTY(QString type READ type CONSTANT)
 		Q_PROPERTY(bool hasFileSystem READ hasFileSystem CONSTANT)
@@ -44,7 +44,7 @@ namespace QDrive
 		bool hasFileSystem() const;
 		QDBusObjectPath fileSystem() const;
 	};
-};
+}
 
 QDebug operator <<(QDebug d, const QDrive::Partition &partition);
 

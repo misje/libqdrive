@@ -1,5 +1,6 @@
 TEMPLATE = lib
 CONFIG *= c++11 warn_on staticlib
+QMAKE_CXXFLAGS *= -Wall -Wextra -pedantic
 QT *= dbus
 QT -= gui
 TARGET = qdrive
