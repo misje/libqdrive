@@ -25,8 +25,7 @@ SOURCES += \
 	src/FileSystem.cpp \
 	src/Monitor.cpp \
 	src/Partition.cpp \
-	src/QDrive.cpp \
-	src/Version.cpp
+	src/QDrive.cpp
 
 libfiles.files = $${DESTDIR}/lib$${TARGET}.a
 libfiles.path = /usr/lib/
