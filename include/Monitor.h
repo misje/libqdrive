@@ -32,6 +32,10 @@ namespace QDrive
 		void driveRemoved(const QDBusObjectPath &path);
 		void partitionAdded(const QDBusObjectPath &path);
 		void partitionRemoved(const QDBusObjectPath &path);
+		void fileSystemAdded(const QDBusObjectPath &path);
+		void fileSystemRemoved(const QDBusObjectPath &path);
+		void blockDeviceAdded(const QDBusObjectPath &path);
+		void blockDeviceRemoved(const QDBusObjectPath &path);
 
 	public:
 		typedef QMap<QString, QVariantMap> InterfaceList;
@@ -44,8 +48,8 @@ namespace QDrive
 		void checkRemovedInterfaces(const QDBusObjectPath &path, const QStringList
 				&interfaces);
 	};
-};
+}
 
-Q_DECLARE_METATYPE(QDrive::Monitor::InterfaceList);
+Q_DECLARE_METATYPE(QDrive::Monitor::InterfaceList)
 
 #endif // MONITOR_H

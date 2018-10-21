@@ -10,6 +10,8 @@
 #include <QObject>
 #include <QDBusObjectPath>
 
+class QDBusArgument;
+
 namespace QDrive
 {
 	/**
@@ -22,13 +24,13 @@ namespace QDrive
 	class DBusObject : public QObject
 	{
 		Q_OBJECT
-		Q_PROPERTY(QDBusObjectPath path MEMBER m_path);
+		Q_PROPERTY(QDBusObjectPath path MEMBER m_path)
 		/** \brief Tells whether the object is accessible and valid
 		 *
 		 * Subclasses should ensure that the object provides the expected
 		 * interfaces.
 		 */
-		Q_PROPERTY(bool valid READ isValid);
+		Q_PROPERTY(bool valid READ isValid)
 
 	public:
 		DBusObject(const QDBusObjectPath &path, QObject *parent = NULL);
@@ -63,11 +65,14 @@ namespace QDrive
 		 */
 		static QString introspect(const QString &path, int replyTimeout);
 		QString introspect() const;
+	
+	protected:
+		static QStringList aayToStringList(const QDBusArgument &byteArrayArray);
 
 	private:
 		QDBusObjectPath m_path;
 		int m_replyTimeout;
 	};
-};
+}
 
 #endif // DBUSOBJECT_H

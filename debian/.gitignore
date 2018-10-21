@@ -1,0 +1,7 @@
+.debhelper/
+debhelper-build-stamp
+files
+libqdrive-dev.substvars
+libqdrive-dev/
+libqdrive0.substvars
+libqdrive0

@@ -10,6 +10,7 @@ using namespace QDrive;
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDBusReply>
+//#include <QDBusArgument>
 
 DBusObject::DBusObject(const QDBusObjectPath &path, QObject *parent)
 	: QObject(parent), m_path(path), m_replyTimeout(100)
@@ -61,7 +62,8 @@ QVariant DBusObject::dbusProperty(const QString &interface, const QString
 
 	QDBusReply<QVariant> reply = sys.call(getProperty, QDBus::Block, m_replyTimeout);
 	if (!reply.isValid())
-		throw DBusException(reply.error().message().toStdString());
+		throw DBusException(tr("Failed to access property %1 on interface %2 at path %3: %4")
+				.arg(property, interface, m_path.path(), reply.error().message()).toStdString());
 
 	return reply.value();
 }
@@ -74,7 +76,8 @@ QString DBusObject::introspect(const QString &path, int replyTimeout)
 
 	QDBusReply<QString> reply = sys.call(introspect, QDBus::Block, replyTimeout);
 	if (!reply.isValid())
-		throw DBusException(reply.error().message().toStdString());
+		throw DBusException(tr("Failed to introspect path %1: %2").arg(path,
+					reply.error().message()).toStdString());
 
 	return reply.value();
 }
@@ -82,4 +85,15 @@ QString DBusObject::introspect(const QString &path, int replyTimeout)
 QString DBusObject::introspect() const
 {
 	return introspect(m_path.path(), m_replyTimeout);
+}
+
+
+QStringList DBusObject::aayToStringList(const QDBusArgument &byteArrayArray)
+{
+	QStringList stringList;
+	byteArrayArray.beginArray();
+	while (!byteArrayArray.atEnd())
+		stringList << qdbus_cast<QByteArray>(byteArrayArray);
+
+	return stringList;
 }
