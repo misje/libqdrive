@@ -17,6 +17,7 @@ namespace QDrive
 	 * question
 	 */
 	quint64 availableSpace(const QString &fileSystemPath);
+	quint64 totalSpace(const QString &fileSystemPath);
 }
 
 #endif // AVAILABLESPACE_H

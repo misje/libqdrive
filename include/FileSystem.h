@@ -24,6 +24,7 @@ namespace QDrive
 		 * or if available space could not be retrieved.
 		 */
 		Q_PROPERTY(quint64 availableSpace READ availableSpace)
+		Q_PROPERTY(quint64 totalSpace READ totalSpace)
 		Q_PROPERTY(QDBusObjectPath blockDevice READ blockDevice)
 
 	signals:
@@ -38,6 +39,7 @@ namespace QDrive
 		bool isMounted() const;
 		QStringList mountPoints() const;
 		quint64 availableSpace() const;
+		quint64 totalSpace() const;
 		QDBusObjectPath blockDevice() const;
 
 	public slots:

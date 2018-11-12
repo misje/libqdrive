@@ -70,6 +70,14 @@ quint64 FileSystem::availableSpace() const
 	return QDrive::availableSpace(mountPoints().at(0));
 }
 
+quint64 FileSystem::totalSpace() const
+{
+	if (!isMounted())
+		return 0;
+
+	return QDrive::totalSpace(mountPoints().at(0));
+}
+
 QDBusObjectPath FileSystem::blockDevice() const
 {
 	return path();
