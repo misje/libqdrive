@@ -72,14 +72,14 @@ qulonglong Drive::size() const
 
 QDateTime Drive::timeDetected() const
 {
-	return QDateTime::fromMSecsSinceEpoch( dbusProperty(Interface::UDisks2("Drive"), 
-				"TimeDetected").toULongLong()/1000 );
+	return QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(dbusProperty(
+					Interface::UDisks2("Drive"), "TimeDetected").toULongLong()/1000));
 }
 
 QDateTime Drive::timeMediaDetected() const
 {
-	return QDateTime::fromMSecsSinceEpoch( dbusProperty(Interface::UDisks2("Drive"), 
-				"TimeMediaDetected").toULongLong()/1000 );
+	return QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(dbusProperty(
+					Interface::UDisks2("Drive"), "TimeMediaDetected").toULongLong()/1000));
 }
 
 QString Drive::connectionBus() const
