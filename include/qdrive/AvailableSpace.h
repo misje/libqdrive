@@ -16,8 +16,8 @@ namespace QDrive
 	 * \param fileSystemPath path to any file or directory in the filesystem in
 	 * question
 	 */
-	quint64 availableSpace(const QString &fileSystemPath);
-	quint64 totalSpace(const QString &fileSystemPath);
+	quint64 availableSpace(const QByteArray &fileSystemPath);
+	quint64 totalSpace(const QByteArray &fileSystemPath);
 }
 
 #endif // AVAILABLESPACE_H

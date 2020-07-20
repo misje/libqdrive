@@ -67,7 +67,7 @@ quint64 FileSystem::availableSpace() const
 	if (!isMounted())
 		return 0;
 
-	return QDrive::availableSpace(mountPoints().at(0));
+	return QDrive::availableSpace(mountPoints().at(0).toUtf8());
 }
 
 quint64 FileSystem::totalSpace() const
@@ -75,7 +75,7 @@ quint64 FileSystem::totalSpace() const
 	if (!isMounted())
 		return 0;
 
-	return QDrive::totalSpace(mountPoints().at(0));
+	return QDrive::totalSpace(mountPoints().at(0).toUtf8());
 }
 
 QDBusObjectPath FileSystem::blockDevice() const
